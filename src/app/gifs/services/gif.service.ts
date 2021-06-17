@@ -108,4 +108,11 @@ export class GifService {
         );
       });
   }
+
+  borrarHistorial() {
+    this._historialBusqueda = [];
+    this.resultado = [];
+    localStorage.removeItem('historialBusqueda');
+    localStorage.removeItem('resultadoGuardado');
+  }
 }
