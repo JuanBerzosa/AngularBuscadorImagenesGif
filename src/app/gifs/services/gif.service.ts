@@ -15,7 +15,7 @@ export class GifService {
     return [...this._historialBusqueda];
   }
 
-  public resultado: any[] = [];
+  public resultado: Gif[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -70,11 +70,10 @@ export class GifService {
     this._historialBusqueda = this._historialBusqueda.slice(0, 9);
 
     this.http
-      .get(
+      .get<SearchGifResponse>(
         `${this.url}?api_key=ryCQ2zwURk6Ft0TyYq4ck84dZT2nPvYT&q=${termino}&limit=20`
       )
-      .subscribe( (respuesta:any)=> {
-        console.log(respuesta.data);
+      .subscribe((respuesta) => {
         this.resultado = respuesta.data;
 
       });
