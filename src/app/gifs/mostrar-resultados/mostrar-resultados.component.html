@@ -3,7 +3,7 @@
 </ul> -->
 
 <div class="row">
-  <div *ngFor="let gif of resultados" class="col-6 col-md-4 col-xl-2">
+  <div *ngFor="let gif of resultados" class="col-6 col-md-4 col-xl-2 animate__animated animate__swing">
     <div class="card">
       <img [src]="gif.images.downsized_medium.url" class="card-img-top" [alt]="gif.title">
       <div class="card-body">
