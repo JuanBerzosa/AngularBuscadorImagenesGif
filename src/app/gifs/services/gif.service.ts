@@ -69,6 +69,7 @@ export class GifService {
     this._historialBusqueda.unshift(termino);
     this._historialBusqueda = this._historialBusqueda.slice(0, 9);
 
+    // Se recomienda poner el tipo en el propio get con <T>, ya que get es de tipo generico
     this.http
       .get<SearchGifResponse>(
         `${this.url}?api_key=ryCQ2zwURk6Ft0TyYq4ck84dZT2nPvYT&q=${termino}&limit=20`
