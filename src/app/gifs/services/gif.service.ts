@@ -8,7 +8,14 @@ import { Gif, SearchGifResponse } from '../models/gifs.interface';
   providedIn: 'root',
 })
 export class GifService {
-  private _historialBusqueda: string[] = [];
+  // Si existe, leemos el historialBusqueda del localStorage, y iniciazalizamo _historialBusqueda a él.
+  // Si no existe, lo dejamos vacio.
+  private historialGuardado = localStorage.getItem('historialBusqueda');
+  private _historialBusqueda: string[] =
+    this.historialGuardado != null ? JSON.parse(this.historialGuardado) : [];
+
+    
+
   private url = environment.URL_GIPHY;
 
   public get historialBusqueda() {
@@ -68,6 +75,12 @@ export class GifService {
     }
     this._historialBusqueda.unshift(termino);
     this._historialBusqueda = this._historialBusqueda.slice(0, 9);
+
+    // Almacenamos en el localStorage el historial de busqueda
+    localStorage.setItem(
+      'historialBusqueda',
+      JSON.stringify(this._historialBusqueda)
+    );
 
     // Se recomienda poner el tipo en el propio get con <T>, ya que get es de tipo generico
     this.http
