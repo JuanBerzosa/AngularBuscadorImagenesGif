@@ -14,15 +14,17 @@ export class GifService {
   private _historialBusqueda: string[] =
     this.historialGuardado != null ? JSON.parse(this.historialGuardado) : [];
 
-    
-
   private url = environment.URL_GIPHY;
 
   public get historialBusqueda() {
     return [...this._historialBusqueda];
   }
 
-  public resultado: Gif[] = [];
+  // Si existe, leemos el resultadoGuardado del localStorage, y iniciazalizamos resultado a él.
+  // Si no existe, lo dejamos vacio.
+  private resultadoGuardado = localStorage.getItem('resultadoGuardado');
+  public resultado: Gif[] =
+    this.resultadoGuardado != null ? JSON.parse(this.resultadoGuardado) : [];
 
   constructor(private http: HttpClient) {}
 
@@ -89,6 +91,10 @@ export class GifService {
       )
       .subscribe((respuesta) => {
         this.resultado = respuesta.data;
+        localStorage.setItem(
+          'resultadoGuardado',
+          JSON.stringify(this.resultado)
+        );
 
       });
   }
