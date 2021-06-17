@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
 import { Gif, SearchGifResponse } from '../models/gifs.interface';
@@ -15,6 +15,7 @@ export class GifService {
     this.historialGuardado != null ? JSON.parse(this.historialGuardado) : [];
 
   private url = environment.URL_GIPHY;
+  private api_key = environment.API_KEY;
 
   public get historialBusqueda() {
     return [...this._historialBusqueda];
@@ -88,18 +89,23 @@ export class GifService {
   }
 
   public apiGet(termino: string) {
+    // Deben ser todos los valores strings, si no, deberíamos convertirlos.
+    // Fijase que cada termino se setea por separado, concatenando los seteos
+    const params = new HttpParams()
+      .set('api_key', this.api_key)
+      .set('q', termino)
+      .set('limit', '20');
+
     // Se recomienda poner el tipo en el propio get con <T>, ya que get es de tipo generico
+    // {params: params} podríamos dejarlo solo como {params}, pero lo dejamos así educativamente
     this.http
-      .get<SearchGifResponse>(
-        `${this.url}?api_key=ryCQ2zwURk6Ft0TyYq4ck84dZT2nPvYT&q=${termino}&limit=20`
-      )
+      .get<SearchGifResponse>(this.url, { params: params })
       .subscribe((respuesta) => {
         this.resultado = respuesta.data;
         localStorage.setItem(
           'resultadoGuardado',
           JSON.stringify(this.resultado)
         );
-
       });
   }
 }
