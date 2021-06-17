@@ -1,17 +1,22 @@
-<!-- <ul>
-  <li *ngFor="let gif of resultados">{{gif.title}}</li>
-</ul> -->
-
 <div class="row">
-  <div *ngFor="let gif of resultados" class="col-6 col-md-4 col-xl-2 animate__animated animate__swing">
+  <div
+    *ngFor="let gif of resultados"
+    class="col-12 col-md-4 col-xl-2 animate__animated animate__swing"
+  >
     <div class="card">
-      <img [src]="gif.images.downsized_medium.url" class="card-img-top" [alt]="gif.title">
+      <img
+        [src]="gif.images.downsized_medium.url"
+        class="card-img-top"
+        [alt]="gif.title"
+      />
       <div class="card-body">
-        <h5 class="card-title">{{gif.title}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{ gif.title }}</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
       </div>
-
     </div>
   </div>
 </div>
