@@ -84,6 +84,10 @@ export class GifService {
       JSON.stringify(this._historialBusqueda)
     );
 
+    this.apiGet(termino);
+  }
+
+  public apiGet(termino: string) {
     // Se recomienda poner el tipo en el propio get con <T>, ya que get es de tipo generico
     this.http
       .get<SearchGifResponse>(

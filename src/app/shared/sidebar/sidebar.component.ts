@@ -6,23 +6,18 @@ import { GifService } from 'src/app/gifs/services/gif.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-
 export class SidebarComponent implements OnInit {
 
-  get historialBusqueda () {
+  get historialBusqueda() {
     return this.gifService.historialBusqueda;
   }
 
-  constructor(private gifService: GifService) { }
-  
-  ngOnInit(): void {
-    
+  constructor(private gifService: GifService) {}
+
+  ngOnInit(): void {}
+
+  buscar(terminoSeleccionado: string) {
+    console.log('Buscando:', terminoSeleccionado);
+    this.gifService.apiGet(terminoSeleccionado);
   }
-
-
-
-
-
-
-
 }
