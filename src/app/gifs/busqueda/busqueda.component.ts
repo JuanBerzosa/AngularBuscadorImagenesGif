@@ -21,13 +21,12 @@ export class BusquedaComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    // Hasta aftgerView no tenemos el valor del ViewChild
-    // console.log('console.log(this.hijoTxtTermino):');
-    // console.log(this.hijoTxtTermino.nativeElement);
+    // Hasta aftgerView no tendríamos el valor del ViewChild 
+    // (por ejemplo en ngOnInit no lo tendríamos aún)
   }
 
   buscar(terminoABuscar: string) {
-    this.gifService.buscar(this.hijoTxtTermino.nativeElement.value);    
+    this.gifService.buscar(this.hijoTxtTermino.nativeElement.value);
     this.hijoTxtTermino.nativeElement.value = '';
   }
 }

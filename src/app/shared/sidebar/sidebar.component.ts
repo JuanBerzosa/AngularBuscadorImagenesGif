@@ -16,15 +16,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {}
 
   buscar(terminoSeleccionado: string) {
-    console.log('Buscando:', terminoSeleccionado);
     this.gifService.apiGet(terminoSeleccionado);
   }
 
   onBorrarHistorial() {
-    console.log(
-      'onBorrarHistorial - historialBusqueda:',
-      this.historialBusqueda
-    );
     this.gifService.borrarHistorial();
   }
 }

@@ -29,7 +29,7 @@ export class GifService {
 
   constructor(private http: HttpClient) {}
 
-  // HECHA CON PROMISES
+  // METODO BUSCAR HECHO CON PROMISES
   // public buscar(termino: string) {
   //   termino ? (termino = termino.trim().toLocaleLowerCase()) : '';
   //   if (termino === '' || termino.length === 0) {
@@ -50,7 +50,7 @@ export class GifService {
   //   });
   // }
 
-  // HECHA CON ASYNC FUNCTIONS
+  // METODO BUSCAR HECHO CON ASYNC FUNCTIONS
   // public async buscar(termino: string) {
   //   termino ? (termino = termino.trim().toLocaleLowerCase()) : '';
   //   if (termino === '' || termino.length === 0) {
@@ -67,7 +67,7 @@ export class GifService {
   //   console.log(responseJson);
   // }
 
-  // Hecha con HttpClient, con observables
+  // METODO BUSCAR HECHO CON HttpClient, con observables
   public buscar(termino: string) {
     termino ? (termino = termino.trim().toLocaleLowerCase()) : '';
     if (termino === '' || termino.length === 0) {
