@@ -11,11 +11,14 @@ export class SidebarComponent implements OnInit {
     return this.gifService.historialBusqueda;
   }
 
+  public activeItem: number|null = null;
+
   constructor(private gifService: GifService) {}
 
   ngOnInit(): void {}
 
-  buscar(terminoSeleccionado: string) {
+  buscar(terminoSeleccionado: string, activeIndex:number) {
+    this.activeItem =activeIndex;
     this.gifService.apiGet(terminoSeleccionado);
   }
 

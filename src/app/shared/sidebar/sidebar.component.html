@@ -5,10 +5,11 @@
 
   <div class="list-group list-reset">
     <a
-      *ngFor="let busqueda of historialBusqueda"
+      *ngFor="let busqueda of historialBusqueda; let i = index"
       href="#"
       class="list-group-item list-group-item-action"
-      (click)="buscar(busqueda)"
+      (click)="buscar(busqueda, i)"
+      [ngClass]="{ active: activeItem === i }"
     >
       {{ busqueda | titlecase }}</a
     >
